@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  tasks:
+  - name: install docker
+    apt:
+      name: docker.io 
+      state: latest      
+          
+  - name: start and enable 
+    service: 
+      name: docker 
+      state: started 
+      enabled: true
+  - name: install pip
+    apt: 
+      name: python-pip 
+      state: present 
+  - name: install docker-py 
+    pip: 
+      name: docker-py 
+      state: present
+  - name: create mongodb container 
+    docker_container: 
+      name: mongodb
+      image: mongo:latest
+      volumes:
+          - mydata:/data/db
+  - name: create docker volume
+    docker_volume:
+      name: mydata 
