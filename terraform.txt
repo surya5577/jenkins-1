@@ -59,7 +59,8 @@ resource "aws_s3_bucket" "b" {
 3..terraform will works on onetime in a folder...we can do number of tasks using one terraform ...
 4. terraform andedhi oka folder lo okasari run authundhi...enko task run avadhu...oka terraform file lo lone manamu anni manage cheyachu..
 5..terrafrom use chesukoni manamu easy ga instance create cheyachu...sizes increse cheyachu...
-
+6. terraform anedhi instance level lo work avuthundhi
+6.terraform will work on instance level
 
 
 
