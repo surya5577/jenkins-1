@@ -1,0 +1,74 @@
+1.terraform installlation using this coomands
+
+sudo apt-get update
+sudo apt-get install wget unzip
+wget https://releases.hashicorp.com/terraform/0.12.13/terraform_0.12.13_linux_amd64.zip
+sudo unzip ./terraform_0.12.13_linux_amd64.zip -d /usr/local/bin/
+terraform -v
+
+>create iam user
+>give ec2 full permissions
+>save access key & security key 
+
+>apt install awscli 
+>aws configure
+
+
+2.create one file for inside content 
+> vi terra.tf
+
+provider "aws" {
+  access_key = "AKIAU77CZHPQTSRVL2PP"
+  secret_key = "JxOAdyrPuCdLgnSOq2KT7XJtdQSgNoxNg2BWVHiY"
+  region     = "us-east-2"
+}
+
+resource "aws_instance" "example11" {
+  ami           = "ami-0d5d9d301c853a04a"
+  instance_type = "t2.micro"
+}
+
+
+
+3. terraform init
+4.terraform plan
+5. terraform apply
+  enter a value = yes 
+
+
+
+create s3 bucket for using terraform:
+
+in google ....1.aws terraform
+select s3 bucket ...select resorces s3 bucket .Private Bucket 
+
+resource "aws_s3_bucket" "b" {
+  bucket = "my-tf-test-bucket"
+  acl    = "private"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
+
+>if you want use this change bucket name and use it...
+> aws s3 ls it will show s3 bucket list
+
+
+3..terraform will works on onetime in a folder...we can do number of tasks using one terraform ...
+4. terraform andedhi oka folder lo okasari run authundhi...enko task run avadhu...oka terraform file lo lone manamu anni manage cheyachu..
+5..terrafrom use chesukoni manamu easy ga instance create cheyachu...sizes increse cheyachu...
+
+
+
+
+
+
+create elestic ip
+aws
+
+
+
+iam 
+group
