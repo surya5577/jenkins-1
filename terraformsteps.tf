@@ -1,3 +1,7 @@
+
+creating instance using terraform
+
+
 provider "aws" {
   access_key = "AKIAU77CZHPQ7EDO43FF"
   secret_key = "8UoJW+5xvapTT40z9sWew0UGuxZP+m38Lhtc5xU2"
@@ -9,6 +13,9 @@ resource "aws_instance" "example11" {
   instance_type = "t2.micro"
 }
 
+
+creating s3 bucket 
+
 resource "aws_s3_bucket" "b" {
   bucket = "my-tf-test-bucket11"
   acl    = "private"
@@ -19,6 +26,8 @@ resource "aws_s3_bucket" "b" {
   }
 }
 
+creating iam user
+
 resource "aws_iam_user" "lb1" {
   name = "loadbalancer"
   path = "/system/"
@@ -28,12 +37,16 @@ resource "aws_iam_user" "lb1" {
   }
 }
 
+
+creating iam group
+
 resource "aws_iam_group" "developers" {
   name = "developers"
   path = "/users/"
 }
 
 
+creating group adding users
 
 resource "aws_iam_group" "group" {
   name = "developers11"
@@ -50,13 +63,15 @@ resource "aws_iam_user" "user_two" {
 
 
 
-
+creating vpc
 
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
 }
 
 
+
+creating subnet
 
 resource "aws_subnet" "main" {
   vpc_id     = "${aws_vpc.main.id}"
