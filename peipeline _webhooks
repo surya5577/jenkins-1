@@ -1,0 +1,30 @@
+using pipeline script configure webhooks and trigger the build
+we need to go git hub repository > settings > add webhook >jenkins url > json language > push event
+
+then go to pipeline script follown below command    ("properties([pipelineTriggers([githubPush()])])")
+
+properties([pipelineTriggers([githubPush()])])
+pipeline {
+    agent any
+
+    stages {
+        stage("Fetch repository") {
+            steps {
+                    git 'https://github.com/sekharreddy0463/hello-world.git'
+                }
+            }
+            stage('Build') { 
+            steps {
+                 sh 'mvn -f pom.xml clean install'
+            }
+        }
+        
+        stage('Test') { 
+            steps {
+                  sh 'mvn -f pom.xml test'
+                  
+            }
+        }
+    }
+}
+
