@@ -1,0 +1,3 @@
+Using the Pipeline Syntax generator and "properties: Set job properties" you can generate the following which will enable SCM polling.
+
+properties([pipelineTriggers([pollSCM('H * * * *')])]
