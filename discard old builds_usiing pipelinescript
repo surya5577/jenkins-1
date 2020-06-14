@@ -1,0 +1,40 @@
+To Discard build after particular number of days:
+
+ options {
+     buildDiscarder(logRotator(daysToKeepStr: '7'))
+ }
+To Discard build after particular number of builds:
+
+ options {
+     buildDiscarder(logRotator(numToKeepStr: '7'))
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ options {
+
+    buildDiscarder(
+        logRotator(
+            // number of build logs to keep
+            numToKeepStr:'5',
+            // history to keep in days
+            daysToKeepStr: '15',
+            // artifacts are kept for days
+            artifactDaysToKeepStr: '15',
+            // number of builds have their artifacts kept
+            artifactNumToKeepStr: '5'
+        )
+    )
+}
