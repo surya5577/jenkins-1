@@ -1,0 +1,41 @@
+        sudo yum update -y
+        
+        sudo chkconfig php-fpm on   
+        
+        sudo service php-fpm start
+        sudo amazon-linux-extras enable php7.4
+        sudo yum install php -y
+        sudo yum install -y php-pear
+        sudo yum install -y php-cgi
+        sudo yum install -y php-common
+        sudo yum install -y php-curl
+        sudo yum install -y php-mbstring
+        sudo yum install -y php-gd
+        sudo yum install -y php-mysqlnd
+         sudo yum install -y php-gettext
+        sudo yum install -y php-bcmath
+        sudo yum install -y php-json
+        sudo yum install -y php-xml
+        sudo yum install -y php-fpm
+        sudo yum install -y php-intl
+        sudo yum install -y php-zip 
+
+		sudo yum update -y  
+
+      sudo yum install -y docker
+
+     sudo service docker start
+
+    sudo usermod -a -G docker ec2-user
+    sudo curl -L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+
+
+-- INSERT --sudo chmod -R 777 *.tar
+tar -xvf *.tar
+rm -rf *.tar
+sudo docker-compose build app
+sudo docker-compose up -d
+sudo docker-compose exec -T app composer install
+sudo docker-compose exec -T app php artisan key:generate
